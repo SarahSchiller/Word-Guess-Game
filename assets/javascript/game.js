@@ -17,7 +17,7 @@ let dictionary =
 let score=10;
 let secretArr = [];
 let wrongLetter =[];
-
+let letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 /*
 let word = dictionary[Math.floor(Math.random() * dictionary.length)];
@@ -39,7 +39,7 @@ function getWord()
 }
 function getUserArray(myWord)
 {
-	for(var i=0;i<myWord.length;i++)
+	for(let i = 0; i < myWord.length; i++)
 	{
 		if(myWord[i] != " ")
 		{
@@ -61,7 +61,7 @@ let myWord= getWord();
 console.log(myWord)
 
 //2. select a secret word from the word bank
-var blankArr= getUserArray(myWord);
+let blankArr= getUserArray(myWord);
 console.log(blankArr);
 
 
@@ -70,7 +70,17 @@ console.log(blankArr);
 document.getElementById("word-choice").innerHTML = blankArr;
 
 //4. on key event which waits for the user's input
+document.onkeyup = function(event) {
 
+    // Determines which key was pressed.
+    
+    let letter = event.key;
+    
+
+    let html = 
+        blankArr + "<p>" + letter + "</p>";
+    document.querySelector("#word-choice").innerHTML = html
+};
 
 	//A. we need to check if the round is over 
 	//if you still have points or the secret word is not displayed
